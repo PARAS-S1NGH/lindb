@@ -59,7 +59,7 @@ def addPatient():
             else:
                 return json.dumps({'error':str(data[0])})
         else:
-            return json.dumps({'html':'<span>Enter the required fields</span>'})
+            return json.dumps({'message':'Enter all required fields'})
         
     except Exception as e:
         return json.dumps({'error':str(e)})
@@ -195,39 +195,41 @@ def searchOperations():
 
 @app.route('/getOperations', methods=['POST'])
 def getOperations():
-	try:
-		# read the posted values from the UI
-		_searchField = request.form['searchField']
-
-		conn = mysql.connect()
-		cursor = conn.cursor()
-		
-		where_stmt = "0=1 "
-		
-		if request.form.get('caseNum'):
-			where_stmt +=  "OR caseNumber='" + _searchField + "' "
-		
-		if request.form.get('docName'):			
-			where_stmt +=  "OR surgeonID='" + _searchField + "' "
-			
-		if request.form.get('patName'):			
-			where_stmt +=  "OR patientID='" + _searchField + "' "
-		
-		if request.form.get('dateOp'):		
-			where_stmt +=  "OR operationDate='" + _searchField + "' "
-			
-		
-		cursor.execute("SELECT * FROM Operations WHERE " + where_stmt)
-		
-		data = cursor.fetchall()
-
-		return jsonify(data)
+    try:
+        # read the posted values from the UI
+        _searchField = request.form['searchField']
         
-	except Exception as e:
-		return json.dumps({'error':str(e)})
-	finally:
-		cursor.close()
-		conn.close()
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        
+        where_stmt = "0=1 "
+        
+        if request.form.get('caseNum'):
+            where_stmt +=  "OR caseNumber='" + _searchField + "' "
+            
+        if request.form.get('docName'):
+            where_stmt +=  "OR surgeonID='" + _searchField + "' "
+            
+        if request.form.get('patName'):
+            mylist = _searchField.partition(" ")
+            cursor.execute("SELECT patientID FROM Patients WHERE firstName=\"" + mylist[0] + "\" AND lastName=\"" + mylist[1] + "\"")
+            pid = cursor.fetchall()
+            where_stmt +=  "OR patientID='" + _searchField + "' "
+            
+        if request.form.get('dateOp'):
+            where_stmt +=  "OR operationDate='" + _searchField + "' "
+            
+        cursor.execute("SELECT * FROM Operations WHERE " + where_stmt)
+        
+        data = cursor.fetchall()
+        
+        return jsonify(data)
+        
+    except Exception as e:
+        return json.dumps({'error':str(e)})
+    finally:
+        cursor.close()
+        conn.close()
 
 @app.route('/showAddProcedure')
 def showAddProcedure():

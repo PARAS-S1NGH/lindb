@@ -306,7 +306,7 @@ def addBundle():
             conn = mysql.connect()
             cursor = conn.cursor()
 
-            cursor.execute("INSERT INTO Bundles (bundleName) VALUES ("+_bname+");")
+            cursor.execute('INSERT INTO Bundles (bundleName) VALUES (\''+_bname+'\');')
             data = cursor.fetchall()
 
             if len(data) is 0:

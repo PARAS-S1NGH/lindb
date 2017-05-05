@@ -10,8 +10,28 @@
     <link href="../static/css/addPatient.css" rel="stylesheet">
 
     <script src="../static/js/jquery-3.2.1.min.js"></script>
-    <script src="../static/js/addBundle.js"></script>
     
+    <script>
+
+      $(function() {
+          $('#btnaddBundle').click(function(){
+
+                  $.ajax({
+                  url:'/addBundle',
+                  data: $('#addBundleForm').serialize(),
+                  type: 'POST',
+                  success: function(response) {
+                      alert(response);
+                  },
+                  error: function(error) {
+                      alert(error);
+                  }
+              });
+          });
+      });
+
+</script>
+
   </head>
  
   <body>
@@ -33,7 +53,7 @@
 
           <form id="addBundleForm" class="form-addBundle">
               <label for="bname" class="sr-only">New Bundle Name</label>
-              <input type="text" name="bname" id="bname" class="form-control" placeholder="Bundle Name" required autofocus>
+              <input type="name" name="bname" id="bname" class="form-control" placeholder="Bundle Name" required autofocus>
               
               <button id="btnaddBundle" class="btn btn-lg btn-primary btn-block" type="button">Add Bundle</button>
           </form>

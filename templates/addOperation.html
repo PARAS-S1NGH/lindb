@@ -12,7 +12,25 @@
     <script src="../static/js/jquery-3.2.1.min.js"></script>
     <script src="../static/js/addOperation.js"></script>
 
-        <!--<script src="../static/js/signUp.js"></script>-->
+    <script>
+      $(function() {
+          $('#btnAddOperation').click(function(){
+
+                  $.ajax({
+                  url:'/addOperation',
+                  data: $('form').serialize(),
+                  type: 'POST',
+                  success: function(response) {
+                      alert(response);
+                  },
+                  error: function(error) {
+                      alert(error);
+                  }
+              });
+          });
+      });
+
+</script>
 
 
     <style>

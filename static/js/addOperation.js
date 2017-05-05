@@ -2,11 +2,11 @@ $(function() {
     $('#btnAddOperation').click(function(){
 
             $.ajax({
-            url:'/signUp',
+            url:'/addOperation',
             data: $('form').serialize(),
             type: 'POST',
             success: function(response) {
-                console.log(response);
+                alert(response);
             },
             error: function(error) {
                 console.log(error);

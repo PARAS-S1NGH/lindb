@@ -106,12 +106,60 @@ def addOperation():
 #         conn.close()
 
 #     return render_template('addOperation.html', patients=patients)
+@app.route('/searchProcedures')
+def searchProcedures():
+	return render_template('searchProcedures.html')
+
+@app.route('/getProcedures', methods=['POST'])
+def getProcedures():
+	try:
+		# read the posted values from the UI
+		_searchField = request.form['searchField']
+
+		conn = mysql.connect()
+		cursor = conn.cursor()
+		
+		cursor.execute("SELECT bundleName FROM Procedures WHERE procName='" + _searchField + "'")
+		
+		data = cursor.fetchall()
+
+		return jsonify(data)
+        
+	except Exception as e:
+		return json.dumps({'error':str(e)})
+	finally:
+		cursor.close()
+		conn.close()
+
+@app.route('/searchBundles')
+def searchBundles():
+	return render_template('searchBundles.html')
+
+@app.route('/getBundles', methods=['POST'])
+def getBundles():
+	try:
+		# read the posted values from the UI
+		_searchField = request.form['searchField']
+
+		conn = mysql.connect()
+		cursor = conn.cursor()
+		
+		cursor.execute("SELECT * FROM Procedures WHERE bundleName='" + _searchField + "'")
+		
+		data = cursor.fetchall()
+
+		return jsonify(data)
+        
+	except Exception as e:
+		return json.dumps({'error':str(e)})
+	finally:
+		cursor.close()
+		conn.close()
 
 @app.route('/searchOperations')
 def searchOperations():
 	return render_template('searchOperations.html')
 
-	
 @app.route('/getOperations', methods=['POST'])
 def getOperations():
 	try:

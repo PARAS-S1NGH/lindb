@@ -10,7 +10,7 @@
     <link href="../static/css/addOperation.css" rel="stylesheet">
 
     <script src="../static/js/jquery-3.2.1.min.js"></script>
-    <script src="../static/js/addOperation.js"></script>
+    <script src="../static/js/addProcedure.js"></script>
     
   </head>
  
@@ -27,8 +27,29 @@
         </nav>
         <h3 class="text-muted">Baylor Scott & White Health</h3>
       </div>
+
+			<div class="row marketing jumbotron">
+
+					<h3>Add New Procedure</h3>
+
+					<form id="addProcedure" class="form-addProcedure">          
+								<table width="100%">
+									<tr>
+										<th>Procedure Name</th>
+										<th><input type="text" name="pname" id="pname" class="form-control" placeholder="Procedure Name" required autofocus></th>
+									</tr>
+									<tr>
+										<th>Bundle Name</th>
+										<th><input type="text" name="bname" id="bname" class="form-control" placeholder="Bundle Name" required autofocus></th>
+									</tr>
+								</table>
+
+								<button id="btnaddProcedure" class="btn btn-lg btn-primary btn-block" type="button">Add Procedure</button>
+					</form>
+
+			</div>
  
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Procedures..">
+    <!--<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Procedures..">
 
 	<table id="myTable">
 	  <tr class="header">
@@ -266,7 +287,7 @@
 	  <tr>
 
 	</table>
- 
+ -->
       <footer class="footer">
         <p>&copy; Group 14</p>
       </footer>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Add Patient</title>
+    <title>Add Bundle</title>
  
     
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -10,7 +10,7 @@
     <link href="../static/css/addPatient.css" rel="stylesheet">
 
     <script src="../static/js/jquery-3.2.1.min.js"></script>
-    <script src="../static/js/addPatient.js"></script>
+    <script src="../static/js/addBundle.js"></script>
     
   </head>
  
@@ -29,23 +29,21 @@
       </div>
  
       <div class="jumbotron">
-        <h1>Adding Patient Info</h1>
-        <form id="addPatient" class="form-addPatient">
-        <label for="inputFirstName" class="sr-only">First Name</label>
-        <input type="text" name="inputFirstName" id="inputFirstName" class="form-control" placeholder="First Name" required autofocus>
-        <label for="inputLastName" class="sr-only">Last Name</label>
-        <input type="text" name="inputLastName" id="inputLastName" class="form-control" placeholder="Last Name" required autofocus>
-        <label for="inputDOB" class="sr-only">Date of Birth</label>
-        <input type="text" name="inputDOB" id="inputDOB" class="form-control" placeholder="YYYY-MM-DD" required>
-         
-        <button id="btnaddPatient" class="btn btn-lg btn-primary btn-block" type="button">Add Patient</button>
-      </form>
+          <h1>Adding Bundles</h1>
+
+          <form id="addBundleForm" class="form-addBundle">
+              <label for="bname" class="sr-only">New Bundle Name</label>
+              <input type="text" name="bname" id="bname" class="form-control" placeholder="Bundle Name" required autofocus>
+              
+              <button id="btnaddBundle" class="btn btn-lg btn-primary btn-block" type="button">Add Bundle</button>
+          </form>
+
       </div>
  
        
  
       <footer class="footer">
-        <p>&copy; Company 2015</p>
+        <p>&copy; Group 14</p>
       </footer>
  
     </div>

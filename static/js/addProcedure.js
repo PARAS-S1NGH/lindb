@@ -1,4 +1,4 @@
-<script>
+/*<script>
 function myFunction() {
   // Declare variables 
   var input, filter, table, tr, td, i;
@@ -19,4 +19,21 @@ function myFunction() {
     } 
   }
 }
-</script>
+</script>*/
+
+$(function() {
+    $('#btnaddProcedure').click(function(){
+
+            $.ajax({
+            url:'/addProcedure',
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function(response) {
+                alert(response);
+            },
+            error: function(error) {
+                alert(error);
+            }
+        });
+    });
+});

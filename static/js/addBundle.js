@@ -1,9 +1,9 @@
 $(function() {
-    $('#btnaddPatient').click(function(){
+    $('#btnaddBundle').click(function(){
 
             $.ajax({
-            url:'/addPatient',
-            data: $('#addPatient').serialize(),
+            url:'/addBundle',
+            data: $('#addBundleForm').serialize(),
             type: 'POST',
             success: function(response) {
                 alert(response);

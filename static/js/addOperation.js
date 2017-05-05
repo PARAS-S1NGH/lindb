@@ -3,13 +3,13 @@ $(function() {
 
             $.ajax({
             url:'/addOperation',
-            data: $('form').serialize(),
+            data: $('#addOps').serialize(),
             type: 'POST',
             success: function(response) {
                 alert(response);
             },
             error: function(error) {
-                console.log(error);
+                alert(error);
             }
         });
     });

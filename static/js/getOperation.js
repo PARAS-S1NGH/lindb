@@ -6,14 +6,14 @@ $(function() {
             data: $('#getOps').serialize(),
             type: 'POST',
             success: function(response) {
-                console.log(response);
+                alert(response);
 				
 				populateTable(response);
 				
             },
             error: function(error) {
-				console.log("ERROR");
-                console.log(error);
+				alert("ERROR");
+                alert(error);
             }
         });
     });

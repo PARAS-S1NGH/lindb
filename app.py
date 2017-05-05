@@ -220,14 +220,16 @@ def getOperations():
         if request.form.get('docName'):
             count = count+1
             mylist = _searchSN.split(' ')
-            cursor.execute("SELECT surgeonID FROM Surgeons WHERE firstName=\"" + mylist[0] + "\" AND lastName=\"" + mylist[1] + "\"")
+            cursor.execute("SELECT surgeonID FROM Surgeons WHERE firstName=\"" +
+                mylist[0] + "\" AND lastName=\"" + mylist[1] + "\"")
             sid = cursor.fetchall()
-            where_stmt +=  "AND patientID='" + str(sid[0][0]) + "' "
+            where_stmt +=  "AND surgeonID='" + str(sid[0][0]) + "' "
             
         if request.form.get('patName'):
             count = count+1
             mylist = _searchPN.split(' ')
-            cursor.execute("SELECT patientID FROM Patients WHERE firstName=\"" + mylist[0] + "\" AND lastName=\"" + mylist[1] + "\"")
+            cursor.execute("SELECT patientID FROM Patients WHERE firstName=\"" +
+                mylist[0] + "\" AND lastName=\"" + mylist[1] + "\"")
             pid = cursor.fetchall()
             where_stmt +=  "AND patientID='" + str(pid[0][0]) + "' "
             
@@ -235,8 +237,6 @@ def getOperations():
             count = count+1
             where_stmt +=  "AND operationDate='" + _searchD + "' "
             
-        Mbox("count", str(count), 1)
-
         if count > 0:
             cursor.execute("SELECT * FROM Operations" + where_stmt)
         else:
@@ -255,6 +255,73 @@ def getOperations():
 @app.route('/showAddProcedure')
 def showAddProcedure():
     return render_template('addProcedure.html')	
+
+@app.route('/addProcedure', methods=['POST'])
+def addProcedure():
+    try:
+        # read the posted values from the UI
+        _pname = request.form['pname']
+        _bname = request.form['bname']
+
+        # validate the received values
+        if _pname and _bname:
+            
+            # all good, let's insert
+
+            conn = mysql.connect()
+            cursor = conn.cursor()
+
+            cursor.callproc('addProcedure',(_pname,_bname))
+            data = cursor.fetchall()
+
+            if len(data) is 0:
+                conn.commit()
+                return json.dumps({'message':'Procedure added successfully'})
+            else:
+                return json.dumps({'error':str(data[0])})
+        else:
+            return json.dumps({'message':'Enter all required fields'})
+        
+    except Exception as e:
+        return json.dumps({'error':str(e)})
+    finally:
+        cursor.close()
+        conn.close()
+
+@app.route('/showAddBundle')
+def showAddBundle():
+    return render_template('addBundle.html')
+
+@app.route('/addBundle', methods=['POST'])
+def addBundle():
+    try:
+        # read the posted values from the UI
+        _bname = request.form['bname']
+
+        # validate the received values
+        if _bname:
+            
+            # all good, let's insert
+
+            conn = mysql.connect()
+            cursor = conn.cursor()
+
+            cursor.execute("INSERT INTO Bundles (bundleName) VALUES ("+_bname+");")
+            data = cursor.fetchall()
+
+            if len(data) is 0:
+                conn.commit()
+                return json.dumps({'message':'Bundle added successfully'})
+            else:
+                return json.dumps({'error':str(data[0])})
+        else:
+            return json.dumps({'message':'Enter all required fields'})
+        
+    except Exception as e:
+        return json.dumps({'error':str(e)})
+    finally:
+        cursor.close()
+        conn.close()
 	
 @app.route('/signUp', methods=['POST'])
 def signUp():

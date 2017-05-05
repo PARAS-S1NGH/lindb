@@ -10,7 +10,7 @@
     <link href="../static/css/addOperation.css" rel="stylesheet">
 
     <script src="../static/js/jquery-3.2.1.min.js"></script>
-    <script src="../static/js/addOperation.js"></script>
+    <script src="../static/js/getOperation.js"></script>
 
     <style>
       th {
@@ -37,11 +37,26 @@
 
         <div class="row marketing jumbotron">
           
-              <h2 align="left"> Add Operation </h2>
+		  <h2 align="left"> Search Operations </h2>
 
-              <h1> WELCOME TO SEARCHING OPERATIONS </h1>
+		  <form id='getOps' class="form-getops">
+			<input type="checkbox" name="caseNum" style="background-color: yellow" id="caseNum" value="1" checked> Case Number <br>
+			<input type="checkbox" name="docName" style="background-color: yellow" id="docName" value="1" checked> Doctor Name <br>
+			<input type="checkbox" name="patName" style="background-color: yellow" id="patName" value="1" checked> Patient Name <br>
+			<input type="checkbox" name="dateOp" style="background-color: yellow" id="dateOp" value="1" checked> Date Operation <br>
+			<label for="searchField" class="sr-only">Search For:</label>
+			<input type="name" name="searchField" id="searchField" class="form-control" placeholder="Thing" required autofocus>
+			 
+			<button id="btnOperation" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
+		  </form>
 
-          </div>
+	  </div>
+	  
+		<table id='resultsTable'>		
+			<tr> <th> Case Number </th> <th> Surgeon ID </th> <th> Patient ID </th> <th> Operation Date </th> <th> Bundle Name </th> </tr>
+			
+		
+		</table>
         
           <footer class="footer">
             <p>&copy; Group 14</p>

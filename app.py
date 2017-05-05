@@ -34,6 +34,7 @@ def showSignUp():
 def showAddPatient():
     return render_template('addPatient.html')
 
+<<<<<<< HEAD
 @app.route('/addPatient', methods=['POST'])
 def addPatient():
     try:
@@ -67,6 +68,8 @@ def addPatient():
         cursor.close()
         conn.close()
 
+=======
+>>>>>>> 3057206dfb9cb23c121b0448fc9487cd1887c58c
 @app.route('/showAddOperation', methods=['GET'])
 def showAddOperation():
     return render_template('addOperation.html')
@@ -177,7 +180,7 @@ def getBundles():
 		conn = mysql.connect()
 		cursor = conn.cursor()
 		
-		cursor.execute("SELECT * FROM Procedures WHERE bundleName='" + _searchField + "'")
+		cursor.execute("SELECT procName FROM Procedures WHERE bundleName='" + _searchField + "'")
 		
 		data = cursor.fetchall()
 
@@ -195,9 +198,11 @@ def searchOperations():
 
 @app.route('/getOperations', methods=['POST'])
 def getOperations():
+<<<<<<< HEAD
     try:
         # read the posted values from the UI
         _searchField = request.form['searchField']
+======>>>>>>> 3057206dfb9cb23c121b0448fc9487cd1887c58c
         
         conn = mysql.connect()
         cursor = conn.cursor()
@@ -214,7 +219,7 @@ def getOperations():
             mylist = _searchField.partition(" ")
             cursor.execute("SELECT patientID FROM Patients WHERE firstName=\"" + mylist[0] + "\" AND lastName=\"" + mylist[1] + "\"")
             pid = cursor.fetchall()
-            where_stmt +=  "OR patientID='" + _searchField + "' "
+            where_stmt +=  "OR patientID='" + pid + "' "
             
         if request.form.get('dateOp'):
             where_stmt +=  "OR operationDate='" + _searchField + "' "

@@ -1,0 +1,44 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+ 
+.form-addPatient {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-addPatient .form-addPatient-heading,
+.form-addPatient .checkbox {
+  margin-bottom: 10px;
+}
+.form-addPatient .checkbox {
+  font-weight: normal;
+}
+.form-addPatient .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-addPatient .form-control:focus {
+  z-index: 2;
+}
+.form-addPatient input[type="firstName"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-addPatient input[type="lastName"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-addPatient input[type="DOB"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add Patient</title>
+ 
+    
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/css/addPatient.css" rel="stylesheet">
+
+    <script src="../static/js/jquery-3.2.1.min.js"></script>
+    <script src="../static/js/addPatient.js"></script>
+    
+  </head>
+ 
+  <body>
+ 
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="/">Home</a></li>
+            <li role="presentation"><a href="#">Sign In</a></li>
+            <li role="presentation" class="active"><a href="showSignUp">Sign Up</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Baylor Scott & White Health</h3>
+      </div>
+ 
+      <div class="jumbotron">
+        <h1>Adding Patient Info</h1>
+        <form class="form-addPatient">
+        <label for="inputFirstName" class="sr-only">First Name</label>
+        <input type="firstName" name="inputFirstName" id="inputFirstName" class="form-control" placeholder="First Name" required autofocus>
+        <label for="inputLastName" class="sr-only">Last Name</label>
+        <input type="lastName" name="inputLastName" id="inputLastName" class="form-control" placeholder="Last Name" required autofocus>
+        <label for="inputDOB" class="sr-only">Date of Birth</label>
+        <input type="DOB" name="inputDOB" id="inputDOB" class="form-control" placeholder="Date of Birth" required>
+         
+        <button id="btnaddPatient" class="btn btn-lg btn-primary btn-block" type="button">Add Patient</button>
+      </form>
+      </div>
+ 
+       
+ 
+      <footer class="footer">
+        <p>&copy; Company 2015</p>
+      </footer>
+ 
+    </div>
+  </body>
+</html>

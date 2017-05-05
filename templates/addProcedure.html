@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Procedure</title>
+ 
+    
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/css/addOperation.css" rel="stylesheet">
+
+    <script src="../static/js/jquery-3.2.1.min.js"></script>
+    <script src="../static/js/addOperation.js"></script>
+    
+  </head>
+ 
+  <body>
+ 
+    <div class="container"> 
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="/">Home</a></li>
+            <li role="presentation"><a href="#">Sign In</a></li>
+            <li role="presentation" class="active"><a href="showSignUp">Sign Up</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Baylor Scott & White Health</h3>
+      </div>
+ 
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Procedures..">
+
+	<table id="myTable">
+	  <tr class="header">
+		<th style="width:60%;">Procedure</th>
+		<th style="width:40%;">Values</th>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" /> Carb Loading</td>
+		<td>
+			<input type="checkbox" /> 1 
+			<input type="checkbox" /> 2 
+			<input type="checkbox" /> 3 
+		</td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Preoperative SSI prevention</td>
+		<td>
+			<input type="checkbox" /> 1 
+			<input type="checkbox" /> 2 
+			<input type="checkbox" /> 3 
+		</td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Preoperative SSI education</td>
+		<td>
+			<input type="checkbox" /> 1 
+			<input type="checkbox" /> 2 
+		</td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Mechanical Bowel Prep + Oral Antibiotics</td>
+		<td><input type="checkbox" /> 1  
+			<input type="checkbox" /> 2  
+			<input type="checkbox" /> 3  
+			<input type="checkbox" /> 4 
+		</td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Hair removal</td>
+		<td><input type="checkbox" /> 1  
+			<input type="checkbox" /> 2  
+			<input type="checkbox" /> 3  
+			<input type="checkbox" /> 4 
+		</td>	  
+		</tr>
+	  <tr>
+		<td><input type="checkbox" />Nutrition consult (BMI <20>40/New Ostomy)</td>
+		<td><input type="checkbox" /> 1  
+			<input type="checkbox" /> 2  
+			<input type="checkbox" /> 3  
+			<input type="checkbox" /> 4
+			<input type="checkbox" /> 5		
+		</td>	  
+		</tr>
+	  <tr>
+		<td><input type="checkbox" />Pleth Variability Index (PVI) monitor used for goal directed fluid therap</td>
+		<td><input type="checkbox" /> Yes  <input type="checkbox" /> No </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />PVI Baseline</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  <input type="checkbox" /> 4 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Total OR Fluid Volume</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  <input type="checkbox" /> 4 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />ASA score</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  <input type="checkbox" /> 4 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Antibiotic dosing time</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  <input type="checkbox" /> 4 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />IV antibiotic Type for surgery</td>
+		<td><input type="checkbox" /> 1  
+			<input type="checkbox" /> 2  
+			<input type="checkbox" /> 3  
+			<input type="checkbox" /> 4
+			<input type="checkbox" /> 5		
+		</td>
+		</tr>
+	  <tr>
+		<td><input type="checkbox" />Blood glucose in preop</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  <input type="checkbox" /> 4 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Blood glucose in OR if applicable</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  <input type="checkbox" /> 4 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Blood glucose in PACU if applicable</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  <input type="checkbox" /> 4 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Euglycemia maintained in postoperative period if applicable</td>
+		<td><input type="checkbox" /> Yes  <input type="checkbox" /> No</td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Temperature in Preop</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  <input type="checkbox" /> 4 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Temperature at arrival to OR</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  <input type="checkbox" /> 4 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Temperature 1 hour in OR</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  <input type="checkbox" /> 4 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Temperature at the end of case</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  <input type="checkbox" /> 4 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Temperature in PACU</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  <input type="checkbox" /> 4 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />TAP block performed</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Personnel performing TAP block</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Skin prep used</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Wound protector used for case</td>
+		<td><input type="checkbox" /> Yes  <input type="checkbox" /> No</td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Glove change performed by sterile team members</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Gown change performed by sterile team members</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Sterile fascial closure</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3 </td>
+	  </tr>
+	  <tr>
+		<td>Wound Class</td>
+		<td><input type="checkbox" /> 1  </td>
+	  </tr>
+	  <tr>
+		<td>Multimodal Pain Management used for surgery</td>
+		<td>
+			<input type="checkbox" /> 1  
+			<input type="checkbox" /> 2  
+			<input type="checkbox" /> 3  
+			<input type="checkbox" /> 4 
+			<input type="checkbox" /> 5
+			<input type="checkbox" /> 6
+		</td>
+	  </tr>
+	  <tr>
+		<td>In to PACU time</td>
+		<td><input type="checkbox" /> 1  </td>
+	  </tr>
+	  <tr>
+		<td>PACU Criteria met</td>
+		<td><input type="checkbox" /> 1  </td>
+	  </tr>
+	  <tr>
+		<td>PACU discharge time</td>
+		<td><input type="checkbox" /> 1  </td>
+	  </tr>
+	  <tr>
+		<td>Incentive Spirometer started Day of Surgery</td>
+		<td><input type="checkbox" /> Yes  <input type="checkbox" /> No </td>
+	  </tr>
+	  <tr>
+		<td>IV fluid rate to floor</td>
+		<td><input type="checkbox" /> 1 </td>
+	  </tr>
+	  <tr>
+		<td>Time to first oral intake</td>
+		<td><input type="checkbox" /> 1  </td>
+	  </tr>
+	  <tr>
+		<td>Abdominal surgical drains avoided </td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Entereg or Movantik ordered postoperatively</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Foley d/c</td>
+		<td>
+			<input type="checkbox" /> 1  
+			<input type="checkbox" /> 2  
+			<input type="checkbox" /> 3  
+			<input type="checkbox" /> 4 
+			<input type="checkbox" /> 5
+		</td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />NG tube usage</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Ambulation Day of Surgery</td>
+		<td>
+			<input type="checkbox" /> 1  
+			<input type="checkbox" /> 2  
+			<input type="checkbox" /> 3  
+			<input type="checkbox" /> 4 
+			<input type="checkbox" /> 5
+		</td>	  
+		</tr>
+	  <tr>
+		<td><input type="checkbox" />CHG wipes started post op day 1</td>
+		<td><input type="checkbox" /> Yes  <input type="checkbox" /> No  <input type="checkbox" /> need diff box </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />PCA</td>
+		<td><input type="checkbox" /> Yes  <input type="checkbox" /> No </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Surgical dressing removed within limits</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3 </td>
+	  </tr>
+	  <tr>
+		<td><input type="checkbox" />Discharge education</td>
+		<td><input type="checkbox" /> 1  <input type="checkbox" /> 2  <input type="checkbox" /> 3  <input type="checkbox" /> 4 </td>
+	  </tr>
+	  <tr>
+
+	</table>
+ 
+      <footer class="footer">
+        <p>&copy; Group 14</p>
+      </footer>
+ 
+    </div>
+  </body>
+</html>

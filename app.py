@@ -1,3 +1,4 @@
+import ctypes
 from flask import Flask, render_template, json, request, jsonify
 from flaskext.mysql import MySQL
 
@@ -9,6 +10,9 @@ app.config['MYSQL_DATABASE_PASSWORD'] = 'lsNZJs2Dc4'
 app.config['MYSQL_DATABASE_DB'] = 'sql9172792'
 app.config['MYSQL_DATABASE_HOST'] = 'sql9.freesqldatabase.com'
 mysql.init_app(app)
+
+def Mbox(title, text, style):
+    ctypes.windll.user32.MessageBoxW(0, text, title, style)
 
 @app.route("/")
 def main():
@@ -34,7 +38,6 @@ def showSignUp():
 def showAddPatient():
     return render_template('addPatient.html')
 
-<<<<<<< HEAD
 @app.route('/addPatient', methods=['POST'])
 def addPatient():
     try:
@@ -68,8 +71,6 @@ def addPatient():
         cursor.close()
         conn.close()
 
-=======
->>>>>>> 3057206dfb9cb23c121b0448fc9487cd1887c58c
 @app.route('/showAddOperation', methods=['GET'])
 def showAddOperation():
     return render_template('addOperation.html')
@@ -199,30 +200,47 @@ def searchOperations():
 @app.route('/getOperations', methods=['POST'])
 def getOperations():
     try:
+
         # read the posted values from the UI
-        _searchField = request.form['searchField']
+        _searchCN = request.form['searchCaseNo']
+        _searchSN = request.form['searchSurgeonName']
+        _searchPN = request.form['searchPatientName']
+        _searchD = request.form['searchDate']
         
         conn = mysql.connect()
         cursor = conn.cursor()
         
-        where_stmt = "0=1 "
+        count = 0
+        where_stmt = " WHERE 1=1 "
         
         if request.form.get('caseNum'):
-            where_stmt +=  "OR caseNumber='" + _searchField + "' "
+            count = count+1
+            where_stmt +=  "AND caseNumber='" + _searchCN + "' "
             
         if request.form.get('docName'):
-            where_stmt +=  "OR surgeonID='" + _searchField + "' "
+            count = count+1
+            mylist = _searchSN.split(' ')
+            cursor.execute("SELECT surgeonID FROM Surgeons WHERE firstName=\"" + mylist[0] + "\" AND lastName=\"" + mylist[1] + "\"")
+            sid = cursor.fetchall()
+            where_stmt +=  "AND patientID='" + str(sid[0][0]) + "' "
             
         if request.form.get('patName'):
-            mylist = _searchField.partition(" ")
+            count = count+1
+            mylist = _searchPN.split(' ')
             cursor.execute("SELECT patientID FROM Patients WHERE firstName=\"" + mylist[0] + "\" AND lastName=\"" + mylist[1] + "\"")
             pid = cursor.fetchall()
-            where_stmt +=  "OR patientID='" + pid + "' "
+            where_stmt +=  "AND patientID='" + str(pid[0][0]) + "' "
             
         if request.form.get('dateOp'):
-            where_stmt +=  "OR operationDate='" + _searchField + "' "
+            count = count+1
+            where_stmt +=  "AND operationDate='" + _searchD + "' "
             
-        cursor.execute("SELECT * FROM Operations WHERE " + where_stmt)
+        Mbox("count", str(count), 1)
+
+        if count > 0:
+            cursor.execute("SELECT * FROM Operations" + where_stmt)
+        else:
+            cursor.execute("SELECT * FROM Operations")
         
         data = cursor.fetchall()
         

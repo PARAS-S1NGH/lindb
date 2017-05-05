@@ -198,11 +198,9 @@ def searchOperations():
 
 @app.route('/getOperations', methods=['POST'])
 def getOperations():
-<<<<<<< HEAD
     try:
         # read the posted values from the UI
         _searchField = request.form['searchField']
-======>>>>>>> 3057206dfb9cb23c121b0448fc9487cd1887c58c
         
         conn = mysql.connect()
         cursor = conn.cursor()

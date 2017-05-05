@@ -34,39 +34,6 @@ def showSignUp():
 def showAddPatient():
     return render_template('addPatient.html')
 
-@app.route('/addPatient', methods=['POST'])
-def addPatient():
-    try:
-        # read the posted values from the UI
-        _fname = request.form['inputFirstName']
-        _lname = request.form['inputLastName']
-        _dob = request.form['inputDOB']
-
-        # validate the received values
-        if _fname and _lname and _dob:
-            
-            # all good, let's insert
-
-            conn = mysql.connect()
-            cursor = conn.cursor()
-
-            cursor.callproc('addPatient',(_fname,_lname,_dob))
-            data = cursor.fetchall()
-
-            if len(data) is 0:
-                conn.commit()
-                return json.dumps({'message':'Patient added successfully'})
-            else:
-                return json.dumps({'error':str(data[0])})
-        else:
-            return json.dumps({'html':'<span>Enter the required fields</span>'})
-        
-    except Exception as e:
-        return json.dumps({'error':str(e)})
-    finally:
-        cursor.close()
-        conn.close()
-
 @app.route('/showAddOperation', methods=['GET'])
 def showAddOperation():
     return render_template('addOperation.html')
@@ -177,7 +144,7 @@ def getBundles():
 		conn = mysql.connect()
 		cursor = conn.cursor()
 		
-		cursor.execute("SELECT * FROM Procedures WHERE bundleName='" + _searchField + "'")
+		cursor.execute("SELECT procName FROM Procedures WHERE bundleName='" + _searchField + "'")
 		
 		data = cursor.fetchall()
 
@@ -208,10 +175,10 @@ def getOperations():
 			where_stmt +=  "OR caseNumber='" + _searchField + "' "
 		
 		if request.form.get('docName'):			
-			where_stmt +=  "OR surgeonID='" + _searchField + "' "
+			where_stmt +=  "OR surgeonID IN (SELECT surgeonID FROM Surgeons WHERE CONCAT(firstName, ' ', lastName)= '" + _searchField + "') "
 			
 		if request.form.get('patName'):			
-			where_stmt +=  "OR patientID='" + _searchField + "' "
+			where_stmt +=  "OR patientID IN (SELECT patientID FROM Patients WHERE CONCAT(firstName, ' ', lastName)= '" + _searchField + "') "
 		
 		if request.form.get('dateOp'):		
 			where_stmt +=  "OR operationDate='" + _searchField + "' "

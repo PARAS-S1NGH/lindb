@@ -107,6 +107,10 @@ def addOperation():
 
 #     return render_template('addOperation.html', patients=patients)
 
+@app.route('/searchOperations')
+def searchOperations():
+	return render_template('searchOperations.html')
+
 @app.route('/showAddProcedure')
 def showAddProcedure():
     return render_template('addProcedure.html')

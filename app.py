@@ -40,50 +40,39 @@ def showAddOperation():
 
 @app.route('/addOperation', methods=['POST'])
 def addOperation():
+    try:
         # read the posted values from the UI
-        _name = request.form['inputName']
-        _email = request.form['inputEmail']
-        _password = request.form['inputPassword']
+        _sfname = request.form['sFirstName']
+        _slname = request.form['sLastName']
+        _pfname = request.form['pFirstName']
+        _plname = request.form['pLastName']
+        _bundle = request.form['bundleName']
+        _opdate = request.form['opDate']
 
         # validate the received values
-        if _name and _email and _password:
-            return json.dumps({'message':'User created successfully'})
-        else:
-            return json.dumps({'html':'<span>Enter the required fields</span>'})
-    # try:
-        # read the posted values from the UI
-        # _sfname = request.form['sFirstName']
-        # _slname = request.form['sLastName']
-        # _pfname = request.form['pFirstName']
-        # _plname = request.form['pLastName']
-        # _bundle = request.form['bundleName']
-        # _opdate = request.form['opDate']
-
-        # # validate the received values
-        # if _sfname and _slname and _pfname and _plname and _bundle and _opdate:
+        if _sfname and _slname and _pfname and _plname and _bundle and _opdate:
             
             # all good, let's insert
 
-            # conn = mysql.connect()
-            # cursor = conn.cursor()
+            conn = mysql.connect()
+            cursor = conn.cursor()
 
-            # cursor.callproc('addOperation',(_sfname,_slname,_pfname,_plname,_bundle,_opdate))
-            # data = cursor.fetchall()
+            cursor.callproc('addOperation',(_sfname,_slname,_pfname,_plname,_bundle,_opdate))
+            data = cursor.fetchall()
 
-            # if len(data) is 0:
-            #     conn.commit()
-            #     return json.dumps({'message':'Added new operation'})
-            # else:
-            #     return json.dumps({'error':str(data[0])})
-            # return json.dumps({'html':'<span>YOU DID IT</span>'})
-        # else:
-        #     return json.dumps({'html':'<span>Enter the required fields</span>'})
+            if len(data) is 0:
+                conn.commit()
+                return json.dumps({'message':'Added new operation'})
+            else:
+                return json.dumps({'error':str(data[0])})
+        else:
+            return json.dumps({'html':'<span>Enter the required fields</span>'})
         
-    # except Exception as e:
-    #     return json.dumps({'error':str(e)})
-    # finally:
-        # cursor.close()
-        # conn.close()
+    except Exception as e:
+        return json.dumps({'error':str(e)})
+    finally:
+        cursor.close()
+        conn.close()
 
 # @app.route('/getSurgeons',methods=['POST'])
 # def addOperation():

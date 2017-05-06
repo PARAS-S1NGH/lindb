@@ -30,9 +30,10 @@ def main():
 #     else:
 #         return "found a tuple"
 
-@app.route('/showSignUp')
-def showSignUp():
-    return render_template('signup.html')
+# this maybe for later use
+#@app.route('/showSignUp')
+#def showSignUp():
+#    return render_template('signup.html')
 
 @app.route('/showAddPatient')
 def showAddPatient():
@@ -288,6 +289,61 @@ def addProcedure():
         cursor.close()
         conn.close()
 
+@app.route('/showAddProcedureValue')
+def showAddProcedureValue():
+    return render_template('addValue.html')	
+
+@app.route('/addValue', methods=['POST'])
+def addValue():
+    try:
+        # read the posted values from the UI
+        _pname = request.form['pname']
+        _val = request.form['val']
+        _desp = request.form['desp']
+
+        # validate the received values
+        if _pname and _val and _desp:
+            
+            # all good, let's insert
+
+            conn = mysql.connect()
+            cursor = conn.cursor()
+
+            cursor.callproc('addValue',(_val,_desp,_pname))
+            data = cursor.fetchall()
+
+            if len(data) is 0:
+                conn.commit()
+                #show page again if user wants to continue
+                #if request.form.get('cont'):
+                 #   return render_template('addValue.html')
+                return json.dumps({'message':'Value added successfully'})
+            else:
+                return json.dumps({'error':str(data[0])})
+
+        else:
+            return json.dumps({'message':'Enter all required fields'})
+        
+    except Exception as e:
+        return json.dumps({'error':str(e)})
+    finally:
+        cursor.close()
+        conn.close()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 @app.route('/showAddBundle')
 def showAddBundle():
     return render_template('addBundle.html')
@@ -349,6 +405,48 @@ def signUp():
                 return json.dumps({'error':str(data[0])})
         else:
             return json.dumps({'html':'<span>Enter the required fields</span>'})
+        
+    except Exception as e:
+        return json.dumps({'error':str(e)})
+    finally:
+        cursor.close()
+        conn.close()
+        
+@app.route('/searchSurgeon')
+def searchSurgeon():
+	return render_template('searchSurgeon.html')
+
+@app.route('/getSurgeon', methods=['POST'])
+def getSurgeon():
+    try:
+
+        # read the posted values from the UI
+        _searchSN = request.form['searchSurgeonName']
+        
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        
+        count = 0
+        where_stmt = " WHERE 1=1 "
+        
+            
+        if request.form.get('docName'):
+            count = count+1
+            mylist = _searchSN.split(' ')
+            cursor.execute("SELECT surgeonID FROM Surgeons WHERE firstName=\"" +
+                mylist[0] + "\" AND lastName=\"" + mylist[1] + "\"")
+            sid = cursor.fetchall()
+            # where_stmt +=  "AND surgeonID='" + str(sid[0][0]) + "' "
+
+            
+        if count > 0:
+            cursor.execute("SELECT * FROM Operations WHERE surgeonID=\""+str(sid[0][0])+"\"")
+        else:
+            cursor.execute("SELECT * FROM Operations")
+        
+        data = cursor.fetchall()
+        
+        return jsonify(data)
         
     except Exception as e:
         return json.dumps({'error':str(e)})

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Procedure</title>
+    <title>Procedure Value</title>
  
     
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -10,7 +10,7 @@
     <link href="../static/css/addOperation.css" rel="stylesheet">
 
     <script src="../static/js/jquery-3.2.1.min.js"></script>
-    <script src="../static/js/addProcedure.js"></script>
+    <script src="../static/js/addValue.js"></script>
     
   </head>
  
@@ -29,21 +29,30 @@
 
 			<div class="row marketing jumbotron">
 
-					<h3>Add New Procedure</h3>
+					<h3>Add New Procedure Value</h3>
 
-					<form id="addProcedure" class="form-addProcedure">          
+					<form id="addValue" class="form-addValue">          
 								<table width="100%">
 									<tr>
 										<th>Procedure Name</th>
 										<th><input type="text" name="pname" id="pname" class="form-control" placeholder="Procedure Name" required autofocus></th>
 									</tr>
 									<tr>
-										<th>Bundle Name</th>
-										<th><input type="text" name="bname" id="bname" class="form-control" placeholder="Bundle Name" required autofocus></th>
+										<th>Value</th>
+										<th><input type="text" name="val" id="val" class="form-control" placeholder="Interger value" required autofocus></th>
+									</tr>
+                                    <tr>
+                                        <th>Description</th>
+										<th><input type="text" name="desp" id="desp" class="form-control" placeholder="Description" required autofocus></th>
+									</tr>
+                                    <tr>
+										<th><input type="checkbox" name="caseNum" style="background-color: yellow" id="caseNum" value="1" checked>Still have more values to add<br></th>
 									</tr>
 								</table>
-
-								<button id="btnaddProcedure" class="btn btn-lg btn-primary btn-block" type="button">Add Procedure</button>
+                                <p>
+                                
+                                </p>
+								<button id="btnaddValue" class="btn btn-lg btn-primary btn-block" type="button">Add Value</button>
 
 					</form>
 

@@ -1,12 +1,12 @@
 $(function() {
-    $('#btnBundle').click(function(){
+    $('#btnSurgeon').click(function(){
 
         $.ajax({
-            url:'/getBundles',
-            data: $('#getBundles').serialize(),
+            url:'/getSurgeon',
+            data: $('#getOps').serialize(),
             type: 'POST',
             success: function(response) {
-                console.log(response);
+                alert(response);
 				
 				populateTable(response);
 				
@@ -29,7 +29,7 @@ function populateTable(data){
 		
 		var tr = document.createElement('tr');
 		
-		for(var j=0; j<1; j++){
+		for(var j=0; j<5; j++){
 			
 			var td = document.createElement('td');
 			

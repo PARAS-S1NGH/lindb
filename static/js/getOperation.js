@@ -6,7 +6,7 @@ $(function() {
             data: $('#getOps').serialize(),
             type: 'POST',
             success: function(response) {
-                alert(response);
+                console.log(response);
 				
 				populateTable(response);
 				

@@ -255,7 +255,24 @@ def getOperations():
 
 @app.route('/showAddProcedure')
 def showAddProcedure():
-    return render_template('addProcedure.html')	
+    return render_template('addProcedure.html', showProcedureInfo())
+	
+def showProcedureInfo():
+	try:
+		conn = mysql.connect()
+		cursor = conn.cursor()
+		
+		cursor.execute("SELECT procName, ValueID, procName FROM")
+		
+		data = cursor.fetchall()
+
+		return jsonify(data)
+	except Exception as e:
+		return json.dumps({'error':str(e)})
+	finally:
+		cursor.close()
+		conn.close()
+		showProcedureInfo()
 
 @app.route('/addProcedure', methods=['POST'])
 def addProcedure():

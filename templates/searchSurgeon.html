@@ -37,29 +37,29 @@
 
 
 
-function populateTable(data){
-	
-	var table = document.getElementById('resultsTable');
-	
-	for(var i=0; i<data.length; i++){
-		
-		var tr = document.createElement('tr');
-		
-		for(var j=0; j<5; j++){
-			
-			var td = document.createElement('td');
-			
-			td.innerHTML = data[i][j];
-			
-			tr.appendChild(td);
-			
-		}
-		
-		table.appendChild(tr);
-		
-	}
-	
-}
+    function populateTable(data){
+    	
+    	var table = document.getElementById('resultsTable');
+    	
+    	for(var i=0; i<data.length; i++){
+    		
+    		var tr = document.createElement('tr');
+    		
+    		for(var j=0; j<5; j++){
+    			
+    			var td = document.createElement('td');
+    			
+    			td.innerHTML = data[i][j];
+    			
+    			tr.appendChild(td);
+    			
+    		}
+    		
+    		table.appendChild(tr);
+    		
+    	}
+    	
+    }
 
     </script>
 
@@ -93,9 +93,9 @@ function populateTable(data){
             <input type="checkbox" name="docName" style="background-color: yellow" id="docName" value="1" checked> Doctor Name <br>
 			<label for="searchField" class="sr-only">Search For:</label>
 			<input type="text" name="searchSurgeonName" id="searchSurgeonName" class="form-control" placeholder="Surgeon Name" required autofocus>
-			 <p>
+			<p>
              
-             </p>
+      </p>
 			<button id="btnSearchSurgeon" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
 		  </form>
 

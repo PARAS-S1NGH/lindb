@@ -42,13 +42,49 @@
 										<th><input type="text" name="bname" id="bname" class="form-control" placeholder="Bundle Name" required autofocus></th>
 									</tr>
 								</table>
+                <p>
 
+                </p>
 								<button id="btnaddProcedure" class="btn btn-lg btn-primary btn-block" type="button">Add Procedure</button>
 
 					</form>
 
 			</div>
- 
+
+      <table id='valueTable'>   
+        <tr> <th> Procedure ID </th> <th> Value ID </th> <th> Deescription </th> </tr>
+          
+        
+      </table>
+      
+      <script>
+
+      function populateTable(){
+  
+        var table = document.getElementById('valueTable');
+        
+        for(var i=0; i<data.length; i++){
+          
+          var tr = document.createElement('tr');
+          
+          for(var j=0; j<3; j++){
+            
+            var td = document.createElement('td');
+            
+            td.innerHTML = data[i][j];
+            
+            tr.appendChild(td);
+            
+          }
+          
+          table.appendChild(tr);
+          
+        }
+  
+      }
+
+    </script>
+
       <footer class="footer">
         <p>&copy; Group 14</p>
       </footer>
